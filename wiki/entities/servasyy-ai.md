@@ -27,7 +27,15 @@
 - [[entities/openclaw|OpenClaw]] → 深度分析
 - [[entities/steer-mechanism|Steer 机制]] → 分析 OpenClaw 的核心优势
 
+## 核心贡献
+
+- 深入剖析 Hermes delegate_task 和 OpenClaw subagent 两种多 Agent 协作模式
+- 提出同步阻塞 vs 异步编排的设计哲学对比
+- 给出混合架构的实践路径
+- 解构 Claude Code Skills 体系，提出三层架构解耦方案
+
 ## 相关来源
 
 - [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - 详细对比分析文章
 - [[sources/hermes-vs-memos-harness-engineering|给你的 Agent 搭操作系统]] - 基于 Harness Engineering 三根支柱的深度对比
+- [[sources/claude-code-to-web-api|从 Claude Code 到 Web API]] - Skills 体系解耦的三层架构

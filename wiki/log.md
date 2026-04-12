@@ -2,6 +2,37 @@
 
 ---
 
+## [2026-04-12 19:35] ingest | 五篇新文章批量摄入（第三批）
+
+**来源**: 5 篇新文章
+**作者**: Lewis爆肝战神, servasyy_ai, @nash_su, 宝玉
+
+**操作**:
+- 创建来源摘要：
+  - [[sources/harness-engineering-business-case|不懂 Harness Engineering，你所谓的 AI 转型只是在浪费预算]]
+  - [[sources/claude-code-to-web-api|从 Claude Code 到 Web API]]
+  - [[sources/hierarchy-to-intelligence|从层级到智能]]
+  - [[sources/codex-team-builds-with-codex|Codex 团队如何用自己的产品构建产品]]
+  - [[sources/cli-comeback-ai-agents|飞书 CLI 开源了]]
+- 创建实体页面：
+  - [[entities/lewis-kuo|Lewis爆肝战神]]（人物）
+  - [[entities/nash-su|@nash_su]]（人物）
+  - [[entities/baoyu|宝玉]]（人物）
+- 更新实体页面：
+  - [[entities/servasyy-ai|servasyy_ai]]（来源数 2→3，新增 Skills 体系贡献）
+  - [[entities/skill-system|Skill 系统]]（来源数 2→3，新增 CLI/MCP 对比）
+- 更新 [[index.md]]
+- 新增交叉引用 15 处
+
+**关键洞察**:
+1. **Harness 商业化案例**：OpenAI 100 万行代码、Anthropic 生成器+评估器、VergeX 四核心模块
+2. **Skills 本质**：菜谱（定义工作流程），Agent 是项目经理，Subagents 是临时工
+3. **AI 替代层级**：Block 四层架构（能力→世界模型→智能层→界面），人在边缘
+4. **Codex 团队哲学**：10 个要点 Spec、不做中期路线图、PM 是填空岗位
+5. **CLI 回归**：自描述、文本交互、dry-run 安全网
+
+---
+
 ## [2026-04-12 14:20] ingest | 三篇新文章批量摄入（第二批）
 
 **来源**: 3 篇新文章
