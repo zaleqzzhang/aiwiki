@@ -67,6 +67,8 @@ Harness Engineering 是构建可靠 Agent 系统的方法论框架。Harness 是
 ## 相关来源
 
 - [[sources/hermes-vs-memos-harness-engineering|给你的 Agent 搭操作系统]] - 基于 Harness Engineering 三根支柱的深度对比
+- [[sources/llm-training-pipeline|大模型训练：原理、路径与新实践]] - 将 Harness Engineering 作为独立优化对象，引用 Meta-Harness 论文
+- [[sources/anatomy-of-agent-harness|The Anatomy of an Agent Harness]] - 系统化 Harness 的 12 个组件和三层工程定义
 
 ## 实践启发
 

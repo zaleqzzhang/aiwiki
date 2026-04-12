@@ -10,19 +10,28 @@
 
 ---
 
-## 来源摘要 (3)
+## 来源摘要 (9)
 
 - [[sources/continual-learning-ai-agents|Continual Learning for AI Agents]] - Harrison Chase 论述 Agent 持续学习的三层架构：Model、Harness、Context
 - [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - Hermes delegate_task 与 OpenClaw subagent 的多 Agent 协作机制对比
 - [[sources/hermes-vs-memos-harness-engineering|给你的 Agent 搭操作系统]] - 基于 Harness Engineering 三根支柱的 Hermes vs MemOS 深度对比
+- [[sources/llm-training-pipeline|大模型训练：原理、路径与新实践]] - 2026 年大模型训练链路全景，强调后训练和 Harness 优化
+- [[sources/anatomy-of-agent-harness|The Anatomy of an Agent Harness]] - Agent Harness 的 12 组件深度拆解
+- [[sources/harness-memory-lockin|Your Harness, Your Memory]] - Harness 与 Memory 的绑定关系，警告封闭 Harness 的锁定风险
+- [[sources/coding-agents-reshape-epd|Coding Agents 重塑 EPD]] - Coding Agents 对工程、产品、设计角色的影响
+- [[sources/building-claude-skills-guide|如何构建真正有效的 Claude Skills]] - Skill 设计的五组件结构和测试方法
+- [[sources/agent-builder-memory-system|Agent Builder 的记忆系统]] - LangSmith Agent Builder 记忆系统的设计与实现
 
 ---
 
-## 实体页面 (9)
+## 实体页面 (12)
 
 ### 人物
-- [[entities/hwchase17|Harrison Chase]] - LangChain 创始人，Agent 架构领域活跃思考者
+- [[entities/hwchase17|Harrison Chase]] - LangChain 创始人，Agent 架构领域活跃思考者，5 篇核心文章作者
 - [[entities/servasyy-ai|servasyy_ai]] - 多 Agent 协作机制研究者，Harness Engineering 实践者
+- [[entities/HiTw93|@HiTw93]] - 大模型训练链路研究者，《你不知道》系列文章作者
+- [[entities/akshay-pachaar|Akshay Pachaar]] - Agent Harness 实践者，12 组件拆解作者
+- [[entities/eng-khairallah1|@eng_khairallah1]] - Claude Skills 设计专家
 
 ### 组织
 *暂无*
@@ -52,14 +61,14 @@
 
 ## 综合分析 (1)
 
-- [[synthesis/ai-agent-systems-overview|AI Agent 系统架构全景图]] - 综合三篇核心文章，构建完整的 Agent 架构、持续学习、多 Agent 协作、Harness Engineering 方法论体系
+- [[synthesis/ai-agent-systems-overview|AI Agent 系统架构全景图]] - 综合六篇核心文章，构建完整的 Agent 架构、持续学习、多 Agent 协作、Harness Engineering 方法论体系
 
 ---
 
 ## 统计
 
-- 来源总数：3
-- 实体总数：9
+- 来源总数：9
+- 实体总数：12
 - 主题总数：3
 - 综合分析数：1
 - 最后更新：2026-04-12

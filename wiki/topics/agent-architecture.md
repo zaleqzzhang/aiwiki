@@ -56,6 +56,8 @@ AI Agent 架构正在从简单的"模型 + 提示词"演变为多层可配置系
 ## 相关来源
 
 - [[sources/continual-learning-ai-agents|Continual Learning for AI Agents]] - Harrison Chase 对三层架构的系统阐述
+- [[sources/anatomy-of-agent-harness|The Anatomy of an Agent Harness]] - Harness 的 12 组件拆解
+- [[sources/harness-memory-lockin|Your Harness, Your Memory]] - Harness 与 Memory 的绑定关系
 
 ## 待探索方向
 

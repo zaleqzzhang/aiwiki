@@ -50,6 +50,27 @@ Context（上下文层）
 | 挑战 | 灾难性遗忘 |
 | 成本 | 高 |
 
+**2026 训练链路**（根据 [[sources/llm-training-pipeline|大模型训练：原理、路径与新实践]]）：
+
+```
+预训练（底座）
+    ↓
+后训练（SFT → RLHF/DPO/RFT → 拒绝采样微调 → 对齐）
+    ↓
+蒸馏（大模型轨迹 → 小模型）
+    ↓
+专用化（TranslateGemma 等）
+    ↓
+发布（Checkpoint 选择）
+    ↓
+生产流量回流（Cursor Composer 2 的 real-time RL）
+```
+
+**关键洞察**：
+- 2026 年大模型差距来自预训练之后的训练链路
+- DeepSeek-R1 四阶段：冷启动 SFT → RL（GRPO）→ 拒绝采样微调 → 对齐
+- Meta-Harness：同一个底模，只改 Harness，可能拉出 6x 性能差距
+
 ### Harness 层持续学习
 
 | 维度 | 说明 |

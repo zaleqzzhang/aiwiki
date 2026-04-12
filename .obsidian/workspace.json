@@ -150,12 +150,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "sources/harness-memory-lockin.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "harness-memory-lockin 的大纲"
             }
           }
         ]
@@ -176,43 +177,43 @@
       "bases:新建数据库": false
     }
   },
-  "active": "e0b0f76c7b075963",
+  "active": "7cb0488888e162e0",
   "lastOpenFiles": [
+    "wiki/sources/harness-memory-lockin.md",
+    "wiki/entities/eng-khairallah1.md",
+    "wiki/sources/agent-builder-memory-system.md",
+    "wiki/sources/building-claude-skills-guide.md",
+    "wiki/sources/coding-agents-reshape-epd.md",
+    "raw/articles/How we built Agent Builder’s memory system.md",
+    "raw/articles/How Coding Agents Are Reshaping Engineering, Product and Design.md",
+    "raw/articles/How to Build Claude Skills That Actually Work  — The Complete Guide..md",
+    "EXPORT.md",
+    "wiki/entities/akshay-pachaar.md",
+    "wiki/entities/HiTw93.md",
+    "sources/harness-memory-lockin.md",
+    "sources",
+    "wiki/sources/anatomy-of-agent-harness.md",
+    "AGENTS.md",
+    "wiki/sources/llm-training-pipeline.md",
+    "raw/articles/The Anatomy of an Agent Harness.md",
+    "raw/articles/Continual learning for AI agents.md",
+    "raw/articles/你不知道的大模型训练：原理、路径与新实践.md",
     "wiki/overview.md",
     "wiki/log.md",
     "wiki/index.md",
     "raw/articles/Your harness, your memory.md",
-    "raw/articles/Continual learning for AI agents.md",
     "raw/articles/同步阻塞 vs 异步编排：Hermes  Delegate 与 OpenClaw 多 Agent 机制深度实战对比.md",
     "wiki/entities/soul-md.md",
-    "AGENTS.md",
     "wiki/synthesis/ai-agent-systems-overview.md",
     "wiki/synthesis",
     "wiki/entities/skill-system.md",
-    "wiki/sources/hermes-vs-memos-harness-engineering.md",
-    "wiki/entities/hook-mechanism.md",
-    "wiki/entities/harness-engineering.md",
-    "raw/articles/给你的 Agent 搭操作系统（实战篇）：Hermes-Agent vs 自建OpenClaw  Harness.md",
-    "wiki/entities/servasyy-ai.md",
-    "wiki/topics/multi-agent-collaboration.md",
-    "wiki/entities/steer-mechanism.md",
-    "wiki/entities/openclaw.md",
-    "wiki/entities/hermes.md",
-    "wiki/sources/hermes-openclaw-multi-agent-comparison.md",
-    "wiki/entities/hwchase17.md",
-    "wiki/entities/catastrophic-forgetting.md",
-    "wiki/sources/continual-learning-ai-agents.md",
-    "wiki/topics/continual-learning.md",
-    "wiki/topics/agent-architecture.md",
     "wiki/topics",
-    "wiki/entities/meta-harness.md",
     "wiki/entities",
     "raw/data",
     "wiki/sources",
     "raw/books",
     "raw/images",
     "raw/articles",
-    "raw",
-    "wiki"
+    "raw"
   ]
 }

@@ -20,6 +20,8 @@ LangChain 创始人，AI Agent 架构领域的活跃思考者和实践者。在 
 - 创建 LangChain 框架
 - 提出 Agent 三层持续学习架构
 - 推动 Deep Agents 开源项目
+- 发布 LangSmith Agent Builder（无代码 Agent 构建平台）
+- 分析 Coding Agents 对 EPD 的影响
 
 ## 关联实体
 
@@ -30,6 +32,9 @@ LangChain 创始人，AI Agent 架构领域的活跃思考者和实践者。在 
 ## 相关来源
 
 - [[sources/continual-learning-ai-agents|Continual Learning for AI Agents]] - 系统阐述 Agent 三层持续学习架构
+- [[sources/harness-memory-lockin|Your Harness, Your Memory]] - 论述 Harness 与 Memory 的绑定关系，警告封闭 Harness 的锁定风险
+- [[sources/coding-agents-reshape-epd|Coding Agents 重塑 EPD]] - 分析 Coding Agents 对工程、产品、设计角色的影响
+- [[sources/agent-builder-memory-system|Agent Builder 的记忆系统]] - LangSmith Agent Builder 记忆系统的设计与实现
 
 ## 开放问题
 
