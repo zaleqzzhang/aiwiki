@@ -2,8 +2,8 @@
 
 **类型**: concept
 **创建日期**: 2026-04-12
-**最后更新**: 2026-04-12
-**来源数量**: 3
+**最后更新**: 2026-04-13
+**来源数量**: 6
 
 ## 定义
 
@@ -120,6 +120,8 @@ Hermes 的节省 token 技巧：
 
 ## 相关来源
 
+- [[sources/hermes-agent-complete-guide|Hermes Agent Complete Guide]] - 118 Skills（96+22）、agentskills.io 标准、Skill 局限性（不跨领域、15-25% overhead）
+- [[sources/hermes-agent-tutorial|Hermes Agent Tutorial]] - Skill 自动创建触发条件（5+ tool calls）、agentskills.io 标准、自我改进
 - [[sources/hermes-vs-memos-harness-engineering|给你的 Agent 搭操作系统]] - Skill 系统的详细对比
 - [[sources/building-claude-skills-guide|如何构建真正有效的 Claude Skills]] - Skill 设计的五组件结构和测试方法
 

@@ -2,6 +2,266 @@
 
 ---
 
+## [2026-04-13 20:15] craft | 盘点建议全量执行（11 项）
+
+**触发**：用户指令"全做"，基于系统盘点报告的全部建议
+
+### 更新现有卡片（4 张）
+
+1. **[[craft/concepts/agent-security|Agent 安全]]** — 补 Glasswing/Mythos 受控发布案例、第四种安全解决方式、新例子
+2. **[[craft/concepts/skill|Skill]]** — 补 Hermes 118 Skills + 40% 提升 + 不跨领域迁移、ClawHub 13,000+ 和 12-20% 恶意率
+3. **[[craft/gaps/agent-security-is-not-prompt-security|Agent 安全 ≠ Prompt 安全]]** — 补第三维度"能力治理"、关联新 gap 和 perspective
+4. **[[craft/drafts/writing-guide|写作指南]]** — 全面重写，反映 13 概念 + 8 设计笔记 + 9 缺口 + 6 视角的完整素材库
+
+### 新建卡片（7 张）
+
+**概念 (2)**：
+- [[craft/concepts/eval|Eval]] — 衡量改进的基准线，Harness Engineering 三支柱之一
+- [[craft/concepts/execution-modes|Agent 执行模式]] — ReAct vs Plan-and-Execute
+
+**设计笔记 (1)**：
+- [[craft/design-notes/self-generation-vs-marketplace|Skill 自生成 vs 外部市场]] — 三条路径的安全/质量/进化权衡
+
+**认知缺口 (3)**：
+- [[craft/gaps/agent-security-is-not-vuln-hunting|Agent 安全 ≠ 漏洞发现安全]] — 三象限安全模型
+- [[craft/gaps/agent-vs-harness-boundary|Agent 层 vs Harness 层边界]] — Chase vs Foster 两种划分
+- [[craft/gaps/skill-two-paths|Skill 不止一条路径]] — 积累提炼 vs 市场安装 vs 规范注入
+
+**视角 (1)**：
+- [[craft/perspectives/controlled-vs-open-release|控制发布 vs 开放发布]] — Glasswing 模式的争论
+
+### 更新后规模
+
+- 来源：33 | 实体：25 | 主题：4 | 综合：1
+- Craft：**13 概念 + 8 设计笔记 + 9 认知缺口 + 6 视角 + 1 草稿 = 37 个文件**（+6）
+
+---
+
+## [2026-04-13 19:55] ingest | 第四批摄入（4 篇）
+
+### 新增来源摘要（4 篇）
+
+1. **[[sources/hermes-agent-tutorial|Hermes Agent Tutorial]]**
+   - v0.8.0 实操教程：一键安装、模型配置（OpenRouter/Anthropic/Ollama）、Gateway、Cron、MCP
+   - 更新 [[entities/hermes]]（安装与运维段）、[[entities/skill-system]]
+
+2. **[[sources/openclaw-vs-hermes-race|OpenClaw vs Hermes: The Race]]**
+   - The New Stack 深度对比：常驻 Agent 新品类、生态优先 vs 学习优先
+   - OpenClaw 安全危机：ClawHavoc 攻击（341/2,857 恶意 Skills）、CVE-2026-25253（CVSS 8.8）
+   - 更新 [[entities/hermes]]（行业定位段）、[[entities/openclaw]]（定义段 + 安全危机段）
+
+3. **[[sources/project-glasswing-mythos|Project Glasswing]]** ⭐ 全新领域
+   - Claude Mythos 自主发现数千零日漏洞，Firefox 147 exploit 90x 提升
+   - 首个"太危险不公开发布"的模型，12 家合作组织防御性安全
+   - 新建 [[entities/claude-mythos]]、[[entities/project-glasswing]]
+
+4. **[[sources/hermes-agent-complete-guide|Hermes Agent Complete Guide]]**
+   - 64.2K stars（10 天从 22K 到 64K）、118 Skills、定价模型、诚实局限性
+   - 73% API 调用为固定开销、Skill 不跨领域迁移、Honcho 默认关闭
+   - 更新 [[entities/hermes]]（Benchmark/成本/局限/安全段）、[[entities/skill-system]]
+
+### 实体更新
+
+- **Hermes**：来源 4→7，新增安装运维、行业定位、Benchmark 与成本、已知局限、安全记录段
+- **OpenClaw**：来源 5→6，更新定义（345K stars、基金会治理），新增 ClawHub 安全危机段
+- **Skill 系统**：来源 4→6
+
+### 新增实体（2 个）
+
+- **Claude Mythos** — 首个自主发现零日漏洞的 AI 模型
+- **Project Glasswing** — Anthropic 防御性网络安全项目
+
+### 索引更新
+
+- index.md 来源数 29→33，实体数 23→25
+
+### Craft 增量检查
+
+- 新素材涉及已有 Craft 卡片：
+  - agent-security 概念 → Project Glasswing 提供了"模型太危险不公开发布"的极端案例（建议补充）
+  - skill 概念 → 118 Skills 具体数据 + 不跨领域迁移的局限性（建议更新）
+- 建议新增认知缺口："Agent 安全 ≠ 漏洞发现安全"（Mythos 案例）
+- 建议新增视角："控制发布 vs 开放发布"（Glasswing 模式的争议）
+
+---
+
+## [2026-04-13 19:55] craft | 系统盘点 + 全面更新（级别三）
+
+**触发**：用户指令"盘一下 craft" → "全做"
+
+### 索引修正
+- index.md 来源数 24→29（补齐 5 个遗漏）
+- index.md 实体数 15→23（补齐 8 个遗漏：3 人物 + 5 概念/工具统计修正）
+- overview.md 从"创建阶段"更新为"活跃构建阶段"，补充规模统计
+
+### 增量更新（5 张四星概念卡片）
+- [[craft/concepts/context-engineering]] - 补充 40% 上下文利用率阈值 + OpenClaw 时间衰减记忆例子
+- [[craft/concepts/hook-mechanism]] - 补充 OpenClaw 7 种 Hook 钩子
+- [[craft/concepts/meta-harness]] - 补充 Hashline 10x 数据
+- [[craft/concepts/three-layer-learning]] - 补充 Hashline + 两大流派视角
+- [[craft/concepts/trace]] - 补充 Hashline 发现过程作为 trace 驱动改进例子
+
+### 新建卡片（10 张）
+**概念** (3)：
+- [[craft/concepts/agents-md-standard]] - AGENTS.md 跨工具标准
+- [[craft/concepts/four-verb-framework]] - Constrain/Inform/Verify/Correct 四动词
+- [[craft/concepts/agent-security]] - Agent 安全 ≠ 模型安全
+
+**设计笔记** (2)：
+- [[craft/design-notes/two-families-reasoning-vs-environment]] - Reasoning-First vs Environment-First
+- [[craft/design-notes/openclaw-time-decay-memory]] - 时间衰减函数 + 双层记忆分层
+
+**视角** (3)：
+- [[craft/perspectives/open-standard-vs-deep-integration]] - AGENTS.md vs CLAUDE.md
+- [[craft/perspectives/cognitive-depth-vs-connectivity]] - Hermes vs OpenClaw 核心哲学
+- [[craft/perspectives/reasoning-first-vs-environment-first]] - 信任模型 vs 信任环境
+
+**认知缺口** (2)：
+- [[craft/gaps/framework-is-not-harness]] - Framework ≠ Harness
+- [[craft/gaps/agent-security-is-not-prompt-security]] - Agent 安全 ≠ Prompt 安全
+
+### 更新后规模
+- 来源：29 | 实体：23 | 主题：4 | 综合：1
+- Craft：11 概念 + 7 设计笔记 + 6 认知缺口 + 5 视角 + 2 草稿
+
+---
+
+## [2026-04-13 19:35] ingest | Hermes vs OpenClaw 2026 (NxCode)
+
+**来源**: https://www.nxcode.io/resources/news/hermes-agent-vs-openclaw-2026-which-ai-agent-to-choose
+**作者**: NxCode Team
+**深度**: 全维度对比
+
+**操作**:
+- 创建来源摘要：[[sources/hermes-vs-openclaw-2026|Hermes vs OpenClaw 2026]]
+- 更新实体页面：[[entities/hermes|Hermes]]（来源 3→4）
+- 更新实体页面：[[entities/openclaw|OpenClaw]]（来源 4→5）
+- 更新实体页面：[[entities/skill-system|Skill 系统]]（来源 3→4）
+- 更新 [[index.md]]（来源 23→24）
+- 新增交叉引用 3 处
+
+**关键洞察**:
+1. **两种 Agent 哲学的清晰定义**：认知深度（Hermes）vs 连接广度（OpenClaw）——不是好坏之分，而是优先级差异
+2. **安全差距的根因是架构性的**：消费级本地工具 → 网络化 Agent 的信任假设不成立（这是通用 Agent 安全教训）
+3. **ClawHub 12-20% 恶意 Skill 率**是 Skill 生态安全的最强量化数据——比之前 craft 中的定性讨论更有说服力
+4. **自我改进 vs 静态 Skill 的长期复利**：运行两个月的 Hermes > 全新安装——知识积累是 Agent 的核心壁垒
+
+---
+
+## [2026-04-13 19:25] ingest | AGENTS.md + CLAUDE.md Glossary（两篇合并处理）
+
+**来源**: 
+- https://latentpatterns.com/glossary/agents-md
+- https://latentpatterns.com/glossary/claude-md
+**作者**: Latent Patterns
+**深度**: 术语定义
+
+**操作**:
+- 创建来源摘要：[[sources/agents-md-glossary|AGENTS.md — Glossary]]
+- 创建来源摘要：[[sources/claude-md-glossary|CLAUDE.md — Glossary]]
+- 创建实体页面：[[entities/agents-md|AGENTS.md]]（发现层级、跨工具兼容、AAIF 治理）
+- 创建实体页面：[[entities/claude-md|CLAUDE.md]]（六层记忆层级、Scoped Rules、按需加载）
+- 更新 [[index.md]]（来源 21→23，实体 16→18）
+- 新增交叉引用 4 处
+
+**关键洞察**:
+1. **AGENTS.md vs CLAUDE.md 不是竞争关系**——AGENTS.md 做跨工具底线，CLAUDE.md 做 Claude Code 深度集成，symlink 桥接
+2. **CLAUDE.md 六层记忆层级**是目前最精细的 Agent 指令系统——从组织策略到自动学习，每层有明确的管理权限和加载时机
+3. **按需加载**是精妙设计——子目录 CLAUDE.md 不占基础上下文，保持精简
+4. **安全面是共同挑战**——恶意仓库的指令文件 = prompt injection 载体
+
+---
+
+## [2026-04-13 19:15] ingest | Agent Frameworks, Runtimes, and Harnesses (Harrison Chase)
+
+**来源**: https://blog.langchain.com/agent-frameworks-runtimes-and-harnesses-oh-my/
+**作者**: Harrison Chase
+**深度**: 分类定义
+
+**操作**:
+- 创建来源摘要：[[sources/frameworks-runtimes-harnesses|Agent Frameworks, Runtimes, and Harnesses]]
+- 更新实体页面：[[entities/hwchase17|Harrison Chase]]（来源 1→6，新增：三层分类学观点）
+- 更新 [[index.md]]（来源 20→21）
+- 新增交叉引用 2 处
+
+**关键洞察**:
+1. **Framework/Runtime/Harness 分类学**是从"工具选择"角度的分层——与 Foster 从"系统架构"角度的分层互补
+2. **Harness = "general purpose version of Claude Code"**——高层、开箱即用、有主见
+3. **所有 Coding CLI 某种意义上都是 Agent Harness**——这扩展了 Harness 概念的外延
+
+---
+
+## [2026-04-13 19:05] ingest | Why Agent Harness Architecture is Important (Tom Foster)
+
+**来源**: https://contextua.dev/why-agent-harness-architecture-is-important/
+**作者**: Tom Foster
+**深度**: 深度对比分析
+
+**操作**:
+- 创建来源摘要：[[sources/harness-architecture-comparison|Why Agent Harness Architecture is Important]]
+- 更新实体页面：[[entities/tom-foster|Tom Foster]]（来源 1→2，新增：两大流派分类）
+- 更新实体页面：[[entities/harness-engineering|Harness Engineering]]（来源 5→6，新增：两大设计流派、40% 上下文阈值、Hashline 10x 数据）
+- 更新主题页面：[[topics/agent-architecture|Agent 架构]]（来源 5→6，新增来源引用）
+- 更新 [[index.md]]（来源 19→20）
+- 新增交叉引用 4 处
+
+**关键洞察**:
+1. **两大流派**：Reasoning-First（信任模型）vs Environment-First（投资环境），不是好坏之分而是哲学差异
+2. **Hashline 是最强经验证据**：10x 改进（6.7%→68.3%），仅改编辑工具——比 Princeton 6x 数据更针对单一 Harness 组件
+3. **40% 上下文利用率阈值**：超过 40% 后可靠性下降，解释了为什么 aggressive 压缩有必要
+4. **MCP Code Mode 减 98.7% 工具上下文**——Claude Code 的闭源优势
+5. **Harness 是新的 Build System**——类比 CI/CD 从"已解决"到"关键基础设施"的演变
+
+---
+
+## [2026-04-13 18:55] ingest | Model, Agent, Harness: Three Layers (Tom Foster)
+
+**来源**: https://contextua.dev/model-agent-harness-the-three-layers-most-people-collapse-into-one/
+**作者**: Tom Foster
+**深度**: 架构定义
+
+**操作**:
+- 创建来源摘要：[[sources/three-layers-model-agent-harness|Model, Agent, Harness: Three Layers]]
+- 创建实体页面：[[entities/tom-foster|Tom Foster]]（人物）
+- 更新主题页面：[[topics/agent-architecture|Agent 架构]]（来源 4→5，新增：Foster 版三层模型、Harness vs Framework 区分、诊断框架）
+- 更新 [[index.md]]（来源 18→19，实体 15→16）
+- 新增交叉引用 4 处
+
+**关键洞察**:
+1. **两种三层划分的差异**：Chase（Model/Harness/Context）把推理循环归入 Harness；Foster（Model/Agent/Harness）把推理循环独立为 Agent 层。Chase 版利于持续学习分析，Foster 版利于故障诊断
+2. **Harness vs Framework**是被忽略的重要区分——Framework 是积木，Harness 是建好的房子
+3. **"大部分日常 Agent 失败是 Layer 3 问题"**——这个诊断经验和 NxCode 的"模型是商品、Harness 是护城河"形成呼应
+4. **Harness 不是纯被动基础设施**：它决定上下文注入、工具可用性、循环终止——是"编排者"
+
+**建议新增**:
+- 考虑新增 `craft/gaps/agent-vs-harness-boundary.md`：Chase 和 Foster 的边界划分差异可能是一个有价值的认知缺口——读者会混淆"Agent"到底指什么
+
+---
+
+## [2026-04-13 18:45] ingest | Harness Engineering: Complete Guide (NxCode)
+
+**来源**: https://www.nxcode.io/resources/news/harness-engineering-complete-guide-ai-agent-codex-2026
+**作者**: NxCode Team
+**深度**: 系统化综合指南
+
+**操作**:
+- 创建来源摘要：[[sources/harness-engineering-complete-guide|Harness Engineering: Complete Guide]]
+- 更新实体页面：[[entities/harness-engineering|Harness Engineering]]（来源 4→5，新增：马匹隐喻、四动词框架、熵管理支柱、三级落地框架、LangChain/OpenAI/Stripe 量化数据、约束反直觉效应、可撕裂性、回答 2 个开放问题）
+- 更新主题页面：[[topics/agent-architecture|Agent 架构]]（来源 3→4，新增来源引用）
+- **Craft 增量更新**：
+  - 更新 [[craft/concepts/harness|Harness 概念卡片]]：补充马匹隐喻展开、约束反直觉效应（解空间约束→token 收敛更快）
+- 更新 [[index.md]]（来源 17→18）
+- 新增交叉引用 4 处
+
+**关键洞察**:
+1. **四动词框架**（Constrain/Inform/Verify/Correct）是目前最精炼的 Harness 定义——比三支柱更抽象、更通用
+2. **三级落地框架**解答了"不同规模团队怎么起步"的实际问题（1-2 小时 → 1-2 天 → 1-2 周）
+3. **熵管理**是被低估的第三大支柱——AI 代码库的文档漂移、命名分裂、死代码比人类代码库更严重
+4. **"可撕裂性"**是新视角：好的 Harness 组件应该能随模型能力提升而移除，过度工程化反而是负担
+5. **LangChain 仅改 Harness 从 Top 30 → Top 5**是目前最直接的量化证据（比 Princeton 6x 数据更有叙事力）
+
+---
+
 ## [2026-04-13 13:50] craft/draft | 一个 Agent 系统 99% 的代码都不是 Prompt
 
 **触发**: 用户指令——选题写作

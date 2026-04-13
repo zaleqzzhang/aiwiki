@@ -3,7 +3,7 @@
 **类型**: framework
 **创建日期**: 2026-04-12
 **最后更新**: 2026-04-13
-**来源数量**: 3
+**来源数量**: 7
 
 ## 定义
 
@@ -201,6 +201,78 @@ API 调用 → 工具执行 → 循环
 - MCP 协议支持
 - 四个插件钩子：`pre_llm_call`, `post_llm_call`, `on_session_start`, `on_session_end`
 
+## 行业定位
+
+**"Learning-loop-first"**：与 OpenClaw 的"ecosystem-first"（345K stars、50+ messaging 集成）相比，Hermes（64.2K stars，截至 2026-04-12，10 天内从 22K 增长到 64K）更注重学习深度。
+
+**哲学定位**：Agent as a mind to develop（vs OpenClaw: Agent as a system to orchestrate）
+
+**v0.6.0 里程碑**（2026-03-30）：
+- Profile 多实例隔离
+- MCP Server 模式：`hermes mcp serve` 暴露会话给 Claude Desktop / Cursor / VS Code
+- 运行成本：$5 VPS 或 Serverless 即可
+
+## 安装与运维（v0.8.0）
+
+**系统要求**：
+- OS：Linux（Ubuntu 20.04+）、macOS（Intel/Apple Silicon）、Windows（WSL2）
+- RAM：4GB 最低，8GB+ 推荐
+- 磁盘：2GB 空闲
+- 模型：最低 64K context tokens（硬性约束，低于此启动拒绝）
+
+**一键安装**：`curl -fsSL https://...install.sh | bash`
+- 自动检测 OS → 安装依赖（Python 3.11+、Node.js、ripgrep、ffmpeg）
+- 克隆到 `~/.hermes/` → 创建 venv → 注册全局 `hermes` 命令
+- `hermes doctor` 诊断环境 / `hermes model` 切换模型
+
+**模型接入**：
+- OpenRouter（200+ 模型统一入口）
+- Anthropic 直连
+- Ollama 本地离线（Apple Silicon 7B 模型 50-80 tok/s）
+- 支持 fallback provider chain（主 Provider 故障自动切换）
+
+**Token 开销**：CLI 每轮约 6-8K input tokens，Telegram 每条约 15-20K
+
+**Cron 调度器**：支持自然语言或 cron 表达式定义定时任务，指定投递渠道
+- `hermes cron add` → 自然语言描述 → 自动解析为调度
+- 后台 daemon 执行，存储 prompt + schedule + delivery 配置
+
+**安全模块 Tirith**：硬性阻止危险命令（如 `curl | sh`），防御提示注入攻击
+
+**配置文件结构**（`~/.hermes/`）：
+- `config.yaml` — 主配置
+- `.env` — API keys
+- `SOUL.md` / `MEMORY.md` — 身份与记忆
+- `skills/` / `sessions/` / `cron/` / `logs/`
+
+**从 OpenClaw 迁移**：安装向导自动检测 `~/.openclaw`，提供配置/技能/记忆一键迁移
+
+## Benchmark 与成本
+
+**学习循环效果**：使用自创 Skill 的 Agent 完成研究任务比新实例快 **40%**（Nous Research）
+
+**FTS5 检索**：~10ms / 10,000+ 文档
+
+**成本结构**：
+- 73% API 调用是固定开销（工具定义占近一半）
+- 反思和优化模块额外消耗 15-25% token
+- 平均每次 API 调用 ~$0.30（预算模型），每任务约 20 次调用
+- 爱好者（本地 + Ollama）：$0/mo；轻量用户：$20-50/mo；重度用户：$50-150/mo
+
+## 已知局限
+
+1. **"Grows with you" 实质是结构化笔记+检索**，不跨领域迁移
+2. **Honcho 自学习功能默认关闭**，需显式启用（文档缺口）
+3. **记忆透明度不如 OpenClaw**——自动管理不够透明
+4. **v0.1→v0.8 两个月**，版本间 API 稳定性无保证
+5. **6 平台 vs OpenClaw 50+**
+6. **非代码生成工具**——对话 Agent ≠ 编码 Agent
+
+## 安全记录
+
+- **零 Agent CVE**（截至 2026-04-12）
+- vs OpenClaw：CVE-2026-25253（CVSS 8.8）
+
 ## 与 OpenClaw 对比
 
 | 维度 | Hermes | OpenClaw |
@@ -238,6 +310,9 @@ API 调用 → 工具执行 → 循环
 
 ## 相关来源
 
+- [[sources/hermes-agent-complete-guide|Hermes Agent Complete Guide]] - 64K stars、118 Skills、定价模型、局限性
+- [[sources/hermes-agent-tutorial|Hermes Agent Tutorial]] - v0.8.0 实操教程：安装、模型配置、Gateway、Cron、MCP
+- [[sources/openclaw-vs-hermes-race|OpenClaw vs Hermes: The Race]] - The New Stack 深度对比，"学习优先 vs 生态优先"
 - [[sources/hermes-multi-agent-team|How to Build a Multi-Agent Team in Hermes]] - Profile 隔离 + 四角色团队 + SOUL.md/AGENTS.md 分离
 - [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - 多 Agent 协作模式对比
 - [[sources/hermes-agent-inside|Inside Hermes Agent]] - 四层记忆架构、学习循环详解

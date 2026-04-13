@@ -52,6 +52,7 @@ Hermes 的选择很有意思：它只暴露了四个插件钩子（`pre_llm_call
 - **MemOS 的 `before_agent_start`**：每次 Agent 启动时，Hook 自动提取任务关键词 → 混合检索相关记忆和 Skill → 按相关度排序取 Top-N → 注入 System Prompt。结果是 Agent 开始工作时已经"看到"了所有相关经验——"前一只工蜂的失败，变成后一只工蜂的本能。"
 - **MemOS 的 `agent_end`**：对话结束时自动触发三层去重（哈希 → 向量 → LLM 裁决）后写入数据库。捕获率从 ~60% 提升到 ~100%。
 - **Hermes 的四个插件钩子**：更轻量的方案。`on_session_start` 和 `on_session_end` 允许自定义逻辑，但不强制执行——它是"你可以挂自己的逻辑"，而非"系统帮你保证"。
+- **OpenClaw 的七种 Hook 钩子**：比 Hermes 更完整的生命周期覆盖。`before_prompt_build` → `before_tool_call` → `after_tool_call` → `before_compaction` → `after_compaction` → `message_received` → `message_sending`。实战用法示例：用 `before_tool_call` 做参数校验——拦截错误格式一次配置全局生效。OpenClaw 的 Hook 设计体现了"关注点分离"最彻底的实现——7 个节点覆盖了从输入到输出、从构建到压缩的完整闭环。
 
 ## 相关页面
 

@@ -2,7 +2,7 @@
 
 **创建日期**: 2026-04-12
 **最后更新**: 2026-04-13
-**来源数量**: 3
+**来源数量**: 6
 
 ## 概述
 
@@ -11,6 +11,8 @@ AI Agent 架构正在从简单的"模型 + 提示词"演变为多层可配置系
 ## 核心概念
 
 ### 三层架构
+
+**Harrison Chase 版本**：Model → Harness → Context（推理循环归入 Harness 层）
 
 **Model（模型层）**
 - 定义：模型权重本身
@@ -47,6 +49,20 @@ AI Agent 架构正在从简单的"模型 + 提示词"演变为多层可配置系
 - [[entities/langsmith|LangSmith]] - Trace 收集平台
 - [[entities/deep-agents|Deep Agents]] - 开源 Harness 实现
 
+### Tom Foster 版三层模型
+
+Model → Agent → Harness（推理循环独立为 Agent 层）
+
+| 层 | 是什么 | 做什么 |
+|----|-------|--------|
+| Layer 1: Model | 原始语言模型 | 预测序列下一个 token |
+| Layer 2: Agent | 模型 + 推理循环 | 观察→规划→选工具→行动→评估 |
+| Layer 3: Harness | 执行平台 | 文件系统、终端、权限、会话持久化、上下文组装、安全 |
+
+**与 Chase 版本的差异**：Chase 把推理循环归入 Harness，Foster 把推理循环独立为 Agent。Foster 的分层更利于诊断（失败定位到具体层），Chase 的分层更利于持续学习分析（三层各自如何演进）。两者互补。
+
+**诊断价值**：Agent 失败时按层排查——模型推理错误？Agent 选错工具/追错计划？Harness 上下文不对/状态丢失？Foster 经验："大部分日常失败是 Layer 3 问题。"
+
 ## 演进趋势
 
 1. **从单一模型到多层系统**：早期 Agent 只是模型 + 提示词，现在分化为三层
@@ -75,6 +91,9 @@ AI Agent 架构正在从简单的"模型 + 提示词"演变为多层可配置系
 - [[sources/harness-memory-lockin|Your Harness, Your Memory]] - Harness 与 Memory 的绑定关系
 - [[sources/prompt-vs-context-vs-harness|Prompt vs Context vs Harness Engineering]] - 三层嵌套层级关系 + Princeton 64% 数据
 - [[sources/openspec-superpowers-harness|OpenSpec、Superpowers 和 Harness]] - 多 Agent 开发场景的三层拼图模型
+- [[sources/harness-engineering-complete-guide|Harness Engineering: Complete Guide]] - 三大支柱（Context/Constraints/Entropy）、三级落地框架、OpenAI/Stripe/LangChain 案例
+- [[sources/three-layers-model-agent-harness|Model, Agent, Harness: Three Layers]] - Model/Agent/Harness 三层精确定义、Harness vs Framework、诊断框架
+- [[sources/harness-architecture-comparison|Why Agent Harness Architecture is Important]] - 五款 Harness 对比、两大流派（Reasoning-First vs Environment-First）、Hashline 10x
 
 ## 待探索方向
 
