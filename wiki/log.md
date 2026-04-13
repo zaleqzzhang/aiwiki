@@ -2,6 +2,31 @@
 
 ---
 
+## [2026-04-13 09:44] ingest | 两篇新文章摄入
+
+**来源**: 2 篇新文章
+**作者**: Justin Young (Anthropic), Mr. Ånand
+
+**操作**:
+- 创建来源摘要：
+  - [[sources/long-running-agents|Effective Harnesses for Long-Running Agents]]
+  - [[sources/hermes-agent-inside|Inside Hermes Agent]]
+- 更新实体页面：
+  - [[entities/harness-engineering|Harness Engineering]]（新增长时运行实践）
+  - [[entities/hermes|Hermes]]（大幅更新：四层记忆、学习循环、Gateway 架构）
+- 更新主题页面：
+  - [[topics/multi-agent-collaboration|多 Agent 协作]]（新增单 Agent vs 多 Agent 哲学对比）
+- 更新 [[index.md]]
+- 新增交叉引用 10 处
+
+**关键洞察**:
+1. **长时运行 Agent**：两阶段方案（Initializer + Coding Agent）、增量推进、会话启动例程
+2. **Hermes 四层记忆**：Prompt Memory（始终在线）→ Session Search（按需检索）→ Skills（渐进加载）→ Honcho（用户建模）
+3. **学习循环**：Periodic Nudge → Skill Creation → Skill Improvement → Session Search
+4. **单 Agent vs 多 Agent**：Hermes 核心是单 Agent 自我改进，多 Agent 是可选能力；OpenClaw 核心是多 Agent 协作编排
+
+---
+
 ## [2026-04-12 19:35] ingest | 五篇新文章批量摄入（第三批）
 
 **来源**: 5 篇新文章

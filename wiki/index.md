@@ -1,6 +1,6 @@
 # LLM Wiki 索引
 
-最后更新：2026-04-12
+最后更新：2026-04-13
 
 ---
 
@@ -10,8 +10,10 @@
 
 ---
 
-## 来源摘要 (9)
+## 来源摘要 (11)
 
+- [[sources/hermes-agent-inside|Inside Hermes Agent]] - Hermes 自我改进 AI Agent 完整架构：学习循环、四层记忆、Gateway
+- [[sources/long-running-agents|Effective Harnesses for Long-Running Agents]] - Anthropic 官方长时运行 Agent 实践：两阶段方案、增量推进
 - [[sources/continual-learning-ai-agents|Continual Learning for AI Agents]] - Harrison Chase 论述 Agent 持续学习的三层架构：Model、Harness、Context
 - [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - Hermes delegate_task 与 OpenClaw subagent 的多 Agent 协作机制对比
 - [[sources/hermes-vs-memos-harness-engineering|给你的 Agent 搭操作系统]] - 基于 Harness Engineering 三根支柱的 Hermes vs MemOS 深度对比
@@ -67,8 +69,8 @@
 
 ## 统计
 
-- 来源总数：14
+- 来源总数：16
 - 实体总数：15
 - 主题总数：3
 - 综合分析数：1
-- 最后更新：2026-04-12
+- 最后更新：2026-04-13

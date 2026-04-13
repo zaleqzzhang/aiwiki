@@ -1,12 +1,66 @@
 # 多 Agent 协作
 
 **创建日期**: 2026-04-12
-**最后更新**: 2026-04-12
-**来源数量**: 1
+**最后更新**: 2026-04-13
+**来源数量**: 2
 
 ## 概述
 
-多 Agent 协作是现代 AI Agent 系统的核心命题：如何让多个 agent 高效协作，共同完成复杂任务。当前主要有两种设计哲学：同步阻塞式（Hermes）和异步编排式（OpenClaw），它们在隔离性、灵活性、token 效率上存在本质差异。
+多 Agent 协作是现代 AI Agent 系统的核心命题：如何让多个 agent 高效协作，共同完成复杂任务。当前主要有两种设计哲学：
+
+1. **单 Agent + 自我改进**（Hermes 核心）：通过知识积累提升能力，多 Agent 协作是可选能力
+2. **多 Agent 协作编排**（OpenClaw）：通过外部编排实现模块化分工
+
+这两种哲学在隔离性、灵活性、token 效率、学习路径上存在本质差异。
+
+## 两种哲学
+
+### 单 Agent 架构（Hermes 核心）
+
+**"知识积累"模式**
+
+```
+单 Agent（持续运行）
+    ├── 学习循环
+    │   ├── Periodic Nudge → 策展记忆
+    │   ├── Skill Creation → 提取流程
+    │   ├── Skill Improvement → 优化流程
+    │   └── Session Search → 检索历史
+    ├── 四层记忆
+    │   ├── Prompt Memory（始终在线）
+    │   ├── Session Search（按需检索）
+    │   ├── Skills（渐进加载）
+    │   └── Honcho（用户建模）
+    └── 可选多 Agent
+        └── delegate_task（同步阻塞）
+```
+
+**特点**：
+- 通过使用积累知识和技能
+- 越用越聪明（自我改进闭环）
+- Token 效率高（渐进式加载）
+- 多 Agent 是可选能力，非核心
+
+### 多 Agent 架构（OpenClaw）
+
+**"模块化分工"模式**
+
+```
+编排层（外部控制）
+    ├── Agent A（固定角色）
+    ├── Agent B（固定角色）
+    └── Agent C（固定角色）
+        ↓
+    事件驱动协作
+    ├── announce 推送结果
+    └── Steer 调整方向
+```
+
+**特点**：
+- 外部编排控制
+- 模块化分工
+- 灵活性高（可 Steer）
+- 需要设计协作拓扑
 
 ## 核心模式
 
@@ -146,7 +200,8 @@ OpenClaw 异步编排层（处理复杂工作流）
 
 ## 相关来源
 
-- [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - 详细对比分析
+- [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - 多 Agent 协作模式对比
+- [[sources/hermes-agent-inside|Inside Hermes Agent]] - Hermes 单 Agent 架构、四层记忆、学习循环
 
 ## 待探索方向
 

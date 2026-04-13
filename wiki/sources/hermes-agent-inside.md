@@ -1,19 +1,27 @@
-# Hermes
+# Inside Hermes Agent: How a Self-Improving AI Agent Actually Works
 
-**类型**: framework
-**创建日期**: 2026-04-12
-**最后更新**: 2026-04-13
-**来源数量**: 2
+**类型**: article
+**作者**: [[entities/mr-anand|Mr. Ånand]]
+**日期**: 2026-04-03
+**来源**: https://mranand.substack.com/p/inside-hermes-agent-how-a-self-improving
+**标签**: #hermes #self-improving #memory-architecture #learning-loop
 
-## 定义
+## 摘要
 
-Hermes 是由 Nous Research 开发的开源 AI Agent，核心特点是**自我改进闭环**。不同于 OpenClaw 的多 Agent 协作，Hermes 是单 Agent 架构，通过使用积累知识和技能。Hermes 同时支持多 Agent 协作模式（delegate_task），但其核心创新是学习循环。
+Hermes Agent 架构深度解析，展示单 Agent 如何通过闭环学习实现自我改进。核心创新是将"发生了什么"升级为"什么有效"，通过四层记忆架构、自主技能创建、FTS5 会话检索构建完整的学习循环。与 OpenClaw 多 Agent 协作不同，Hermes 选择单 Agent + 知识积累路径。
 
-## 核心架构
+## 关键要点
+
+### 核心差异
+
+| 维度 | OpenClaw | Hermes |
+|------|----------|--------|
+| 架构 | 多 Agent 协作 | 单 Agent |
+| 学习 | 外部编排 | 自我改进闭环 |
+| 记忆 | Hub 集中路由 | 四层分离架构 |
+| 适用 | 任务分发 | 知识积累 |
 
 ### 学习循环四要素
-
-Hermes 的独特之处在于将"发生了什么"升级为"什么有效"：
 
 1. **Periodic Nudge（定期提示）**
    - 会话中间自动触发
@@ -56,50 +64,20 @@ Hermes 的独特之处在于将"发生了什么"升级为"什么有效"：
 └─────────────────────────────────────────────┘
 ```
 
-**分层原则**：
+**分层原则**
 - 重要性 → Prompt Memory（每个会话都需要）
 - 相关性 → Session Search（特定主题触发时检索）
 - 程序性 → Skills（任务执行时加载）
 - 用户特性 → Honcho（长期个人助理场景）
 
-## 多 Agent 协作模式
-
-Hermes 同时支持多 Agent 协作（delegate_task），但这是可选能力：
-
-### 架构设计
-
-- **同步阻塞**：父 agent 等待所有子 agent 完成后返回
-- **强隔离**：子 agent 中间推理不污染父 agent 上下文，只返回 summary
-- **并行执行**：ThreadPoolExecutor，最多 3 个任务并行
-- **深度限制**：MAX_DEPTH = 2（父 → 子，不可再嵌套）
-
-### 子 Agent 构造
-
-每次委派创建全新的 AIAgent 实例：
-- 独立的对话历史
-- 独立的 Terminal session
-- 专门构建的 System Prompt
-
-**工具剥夺**：
-- `delegate_task`：禁用（防止递归委派）
-- `clarify`：移除（无法与用户交互）
-- `memory`：剥夺（保护共享记忆）
-- `execute_code`：禁用（避免复杂脚本）
-
-### 生命周期控制
-
-- 迭代上限：默认 50 轮
-- **无超时机制**：子 agent 可无限运行
-- 凭证管理：三级优先级解析，自动释放 lease
-
-## Gateway 架构
+### Gateway 架构
 
 - **统一会话路由**：跨平台（CLI、Telegram、Discord、Slack、WhatsApp、Signal、Email）
+- **Platform Adapters**：各平台适配器
 - **Session ID 绑定**：一个会话跨平台连续
 - **Cron Ticking**：定时任务触发
-- **闭环设计**：消息 + 技能创建 + 定时输出都通过 Gateway
 
-## Agent Loop
+### Agent Loop 内部
 
 ```
 消息到达 → 生成 Task ID
@@ -115,17 +93,17 @@ API 调用 → 工具执行 → 循环
 最终响应 → 持久化 SQLite → Gateway 输出
 ```
 
-**Compression 细节**：
+**Compression 细节**
 - 辅助模型扫描全量对话
 - 提取有价值内容写入 MEMORY.md（3,575 字符内）
 - Lineage（参考链）保留在 SQLite，可追溯原始内容
 
-**Prompt Caching**：
+**Prompt Caching**
 - 稳定前缀 → API Provider 缓存
 - 缓存失效：切换模型、改记忆文件、改上下文文件
 - Provider 容错：配置多个 Provider，自动降级
 
-## Terminal Backends（6 种）
+### Terminal Backends（6 种）
 
 | Backend | 适用场景 |
 |---------|----------|
@@ -136,67 +114,67 @@ API 调用 → 工具执行 → 循环
 | Modal | Serverless，间歇使用 |
 | Daytona | Serverless，间歇使用 |
 
-**容器安全**：
+**容器安全**
 - 只读根文件系统
 - Linux capabilities 降权
 - 命名空间隔离
-- 零遥测（设计默认）
+- 零遥测（设计默认，非可选）
 
-## 内置工具（40+）
+### 技能系统
 
-- **Execution**：终端命令、代码运行
-- **Web**：搜索、浏览器自动化
-- **Media**：视觉、图像生成、TTS
-- **Coordination**：子 Agent 委托、多模型推理
-- **Memory/Planning**：记忆层交互
+**40+ 内置工具**
+- Execution：终端命令、代码运行
+- Web：搜索、浏览器自动化
+- Media：视觉、图像生成、TTS
+- Coordination：子 Agent 委托、多模型推理
+- Memory/Planning：记忆层交互
 
-**扩展能力**：
-- MCP 协议支持
-- 四个插件钩子：`pre_llm_call`, `post_llm_call`, `on_session_start`, `on_session_end`
+**Skills 结构**
+```
+~/.hermes/skills/
+├── mlops/
+│   ├── axolotl/
+│   │   ├── SKILL.md          # 主指令（必需）
+│   │   ├── references/       # 附加文档
+│   │   ├── templates/        # 输出格式
+│   │   ├── scripts/          # 辅助脚本
+│   │   └── assets/           # 补充文件
+│   └── vllm/
+│       └── SKILL.md
+├── devops/
+│   └── deploy-k8s/           # Agent 创建的技能
+│       ├── SKILL.md
+│       └── references/
+└── .hub/                     # Skills Hub 状态
+    ├── lock.json
+    ├── quarantine/
+    └── audit.log
+```
 
-## 与 OpenClaw 对比
+### 与 OpenClaw 对比
 
-| 维度 | Hermes | OpenClaw |
-|------|--------|----------|
-| 架构 | 单 Agent + 可选多 Agent | 多 Agent 协作 |
-| 学习 | 自我改进闭环 | 外部编排 |
-| 记忆 | 四层分离架构 | Hub 集中路由 |
-| Gateway | 完整闭环（消息+技能+定时） | 仅消息分发 |
-| Token 效率 | 高（渐进式加载） | 低（上下文膨胀） |
-| 灵活性 | 中 | 高 |
-| 超时控制 | ❌ | ✅ |
-| Steer 能力 | ❌ | ✅ |
+| 维度 | OpenClaw | Hermes |
+|------|----------|--------|
+| Gateway | 仅消息分发 | 完整闭环（消息+技能+定时） |
+| 学习 | 外部机制 | 内置循环 |
+| 记忆 | Hub 集中 | 四层分离 |
+| 适用 | 模块化任务分发 | 长期知识积累 |
 
-## 适用场景
+## 关联实体
 
-**Hermes 更适合**：
-- 长期个人助理
-- 知识积累型任务
-- 需要跨平台连续会话
-- 定时自动化任务
+- [[entities/hermes]] - Hermes Agent 工具
+- [[entities/openclaw]] - OpenClaw 多 Agent 框架
+- [[entities/skill-system]] - 技能创建和管理机制
+- [[entities/hook-mechanism]] - 插件钩子机制
 
-**OpenClaw 更适合**：
-- 模块化任务分发
-- 需要运行时引导（Steer）
-- 需要持久化和恢复
-- 复杂多 Agent 协作
+## 引用此来源的页面
 
-## 与其他实体的关系
-
-- [[entities/openclaw|OpenClaw]] → 对比框架
-- [[entities/harness-engineering|Harness Engineering]] → Harness 的具体实现
-- [[entities/skill-system|Skill 系统]] → 自主技能创建机制
-- [[entities/hook-mechanism|Hook 机制]] → 插件钩子
-- [[topics/multi-agent-collaboration|多 Agent 协作]] → 可选能力
-
-## 相关来源
-
-- [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - 多 Agent 协作模式对比
-- [[sources/hermes-agent-inside|Inside Hermes Agent]] - 四层记忆架构、学习循环详解
+- [[entities/hermes]] - 四层记忆架构、学习循环
+- [[topics/multi-agent-collaboration]] - 单 Agent vs 多 Agent 对比
 
 ## 开放问题
 
 - 单 Agent 架构的上限是什么？任务复杂度 vs 知识积累
-- 3,575 字符限制是否足够？策展策略的权衡
-- 如何在保持 token 效率的同时引入超时控制和 Steer 能力？
 - Honcho 用户建模层的实际效果如何？
+- 3,575 字符限制是否足够？策展策略的权衡
+- Nebius Token Factory 托管方案的经济性如何？

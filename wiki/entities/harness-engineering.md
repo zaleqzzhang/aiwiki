@@ -2,8 +2,8 @@
 
 **类型**: concept
 **创建日期**: 2026-04-12
-**最后更新**: 2026-04-12
-**来源数量**: 1
+**最后更新**: 2026-04-13
+**来源数量**: 2
 
 ## 定义
 
@@ -64,11 +64,55 @@ Harness Engineering 是构建可靠 Agent 系统的方法论框架。Harness 是
 - [[entities/skill-system|Skill 系统]] → 轨迹提炼为可复用经验
 - [[topics/agent-architecture|Agent 架构]] → Harness 是架构的底层系统
 
+## 长时运行实践
+
+### 跨上下文窗口挑战
+
+**核心问题**：上下文窗口有限，复杂项目无法在单个窗口完成。每个新会话从零记忆开始。
+
+**两大失败模式**：
+| 模式 | 表现 | 后果 |
+|------|------|------|
+| One-shot 症候群 | 试图一次性完成所有任务 | 上下文耗尽，功能半实现 |
+| 过早宣布完成 | 看到进展就宣布项目完成 | 遗漏功能，质量不达标 |
+
+### 两阶段解决方案
+
+**Initializer Agent（首次会话）**：
+- 创建 `init.sh` 脚本（运行开发服务器）
+- 创建进度文件（如 `claude-progress.txt`）
+- 初始 Git commit（展示新增文件）
+- 编写 Feature List（JSON 格式功能清单）
+
+**Coding Agent（后续会话）**：
+- 增量推进：每次只做一个功能
+- 保持清洁状态：代码可合并到主分支
+- 会话结束：Git commit + 进度更新
+
+### 会话启动例程
+
+```
+1. pwd → 确认工作目录
+2. 读 Git logs 和进度文件 → 了解最近工作
+3. 读 Feature List → 选最高优先级未完成功能
+4. 运行 init.sh → 启动开发服务器
+5. 基础端到端测试 → 验证现有功能正常
+6. 开始新功能开发
+```
+
+### 设计原则
+
+- **增量优于一次性**：避免上下文耗尽
+- **清洁状态**：每次会话结束时代码可合并
+- **JSON 优于 Markdown**：模型更难不当修改结构化文件
+- **显式优于隐式**：强指令防止模型偷懒
+
 ## 相关来源
 
 - [[sources/hermes-vs-memos-harness-engineering|给你的 Agent 搭操作系统]] - 基于 Harness Engineering 三根支柱的深度对比
 - [[sources/llm-training-pipeline|大模型训练：原理、路径与新实践]] - 将 Harness Engineering 作为独立优化对象，引用 Meta-Harness 论文
 - [[sources/anatomy-of-agent-harness|The Anatomy of an Agent Harness]] - 系统化 Harness 的 12 个组件和三层工程定义
+- [[sources/long-running-agents|Effective Harnesses for Long-Running Agents]] - Anthropic 官方长时运行 Agent 实践
 
 ## 实践启发
 
