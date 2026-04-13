@@ -2,6 +2,56 @@
 
 ---
 
+## [2026-04-13 21:15] craft/draft | OpenClaw vs. Hermes Agent：两种 AI Agent 的生存哲学
+
+第七篇文章草稿，写入 `wiki/craft/drafts/openclaw-vs-hermes-agent.md`。约 2,500 中文字。
+
+**文章结构**（九节）：
+1. 不是选哪个更好的问题——两条不同的技术路线
+2. 数据对比表——Stars/平台/Skills/安全/成本/哲学
+3. OpenClaw：连接一切——Android 类比、50+ 平台、ClawHub 生态、交响乐团协作
+4. 安全：连接广度的结构性代价——9 CVE、135K 暴露、12-20% 恶意 Skill
+5. Hermes：先学会一件事——学习循环四步、四层记忆、约束催生架构、安全副产品
+6. 真正的分歧：时间复利——短期广度赢、长期深度赢
+7. 多 Agent 协作：交响乐团 vs 总承包商——Steer/超时/Token 效率/隔离性
+8. 记忆系统：策展 vs 堆叠——扁平文件 vs 分层策展
+9. 三个判断：融合趋势但分化不消失、安全第一筛选器、Agent 活多久决定选什么
+
+**使用素材**：hermes/openclaw 实体、cognitive-depth-vs-connectivity 视角、agent-memory 概念、hermes-memory-limit/openclaw-compaction 设计笔记、rag-is-not-memory 认知缺口、agent-security 概念、7 篇来源摘要
+
+---
+
+## [2026-04-13 21:02] craft/draft | 不懂 Harness Engineering，你的 AI 转型只是在浪费预算
+
+第六篇文章草稿，写入 `wiki/craft/drafts/harness-engineering-budget-waste.md`。约 3,000 中文字。
+
+**文章结构**（九节）：
+1. 钱都花在哪了——95% 企业 AI 试点失败的典型路径
+2. 什么是 Harness——马匹隐喻 + Vivek Trivedy 定义 + Claude Code 512K 行数据
+3. 数据：Harness 差距有多大——Princeton 6x、LangChain Top 5、Hashline 10x、Codex 100 万行、Stripe 1000 PR
+4. 四动词框架——Constrain/Inform/Verify/Correct 闭环 + 纠正 Fowler 偏见
+5. Workflow ≠ Harness——主导权差异 + 修 Bug 对比场景
+6. 三层嵌套——Prompt ⊂ Context ⊂ Harness + 投资策略
+7. 三级落地框架——Level 1（1-2 小时）→ Level 2（1-2 天）→ Level 3（1-2 周）
+8. 五个常见错误——过度工程化、静态配置、忽视文档、无反馈、只给人读
+9. 真正的护城河——轨迹积累是复利
+
+**使用素材**：harness 概念卡片、四动词框架、context-engineering、agents-md-standard（概念）+ prompt-is-not-harness、harness-is-not-workflow、framework-is-not-harness（认知缺口）+ two-families 设计笔记 + constraint-vs-unbounded 视角 + 6 篇来源摘要 + 已有草稿参考
+
+---
+
+## [2026-04-13 20:57] craft | 起草 Hermes 文章
+
+**触发**：用户指令"请写一篇关于 Hermes 的文章，可以主动发现新素材"
+
+- 联网搜索 Hermes 最新动态（v0.8.0 release notes、GitHub Stars 64K+）
+- 综合 7 篇来源摘要、12 张概念卡片、8 张设计笔记、多张认知缺口和视角卡片
+- 创建 [[craft/drafts/hermes-the-agent-that-learns|Hermes：一个会从错误中学习的 Agent]]
+- 约 2,000 字，以学习循环为核心叙事线
+- 覆盖：RAG ≠ Memory 切入 → 四层记忆 → Skill 自生成 → Profile 隔离 → 行业坐标 → 三个判断
+
+---
+
 ## [2026-04-13 20:15] craft | 盘点建议全量执行（11 项）
 
 **触发**：用户指令"全做"，基于系统盘点报告的全部建议
