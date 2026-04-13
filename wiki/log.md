@@ -2,6 +2,28 @@
 
 ---
 
+## [2026-04-13 13:50] craft/draft | 一个 Agent 系统 99% 的代码都不是 Prompt
+
+**触发**: 用户指令——选题写作
+
+**文章结构**:
+1. 反直觉开场：Claude Code 512,000 行代码，Prompt 只有几千行
+2. 三层嵌套关系：Prompt ⊂ Context ⊂ Harness + Princeton 6x 数据
+3. 12 组件拆解：Prompt 只覆盖其中一小部分
+4. 四个关键 Harness 组件展开：上下文策展、压缩算法、记忆系统、安全沙箱
+5. 认知纠偏：Harness ≠ Workflow（主导权归属）
+6. Prompt 的正确定位：决定下限，Harness 决定上限
+7. 行动指南：四步优先级排序
+
+**使用的 Craft 素材**: 
+- 概念卡片：harness、context-engineering、agent-memory、meta-harness、skill
+- 认知缺口：prompt-is-not-harness、harness-is-not-workflow
+- 设计笔记：openclaw-compaction-algorithm
+
+**操作**: 新建草稿 [[craft/drafts/99-percent-is-not-prompt]]，更新 [[index.md]]（新增草稿分类）
+
+---
+
 ## [2026-04-13 13:38] craft | 高优先级 Craft 卡片补建（3 张）
 
 **触发**: 用户指令，基于 Craft 层审计报告的高优先级建议

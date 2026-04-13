@@ -106,6 +106,9 @@
 - [[craft/perspectives/memory-autonomy-vs-system-enforcement|记忆自治 vs 系统强制]] - Hermes 路径 vs MemOS 路径
 - [[craft/perspectives/constraint-vs-unbounded-design|约束式 vs 无界式设计]] - 有限空间强制策展 vs 无限存储智能管理
 
+### 草稿 (1)
+- [[craft/drafts/99-percent-is-not-prompt|一个 Agent 系统 99% 的代码都不是 Prompt]] - 从 Prompt → Context → Harness 三层嵌套论述系统工程的重要性
+
 ---
 
 ## 统计
