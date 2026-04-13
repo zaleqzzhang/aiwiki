@@ -37,7 +37,9 @@ Claude Code 有 512,000+ 行代码。其中 Prompt 占多少？即使把所有 S
 - 裸 API + 精心设计的 Prompt → SWE-Bench 通过率 X
 - Anthropic 的 Harness + 同样的 Prompt → SWE-Bench 通过率 6X
 
-6 倍差距不是 Prompt 的功劳——两者用的 Prompt 水平相当。差距来自 Harness：错误恢复机制、文件系统重构、工具链优化、Linter 重写（把受众从人改成 AI）。
+Princeton 研究更精确：同一 Claude Opus 4.5，仅改变 harness 配置（不改模型、不改 Prompt），solve rate 提升 64%。一个 harness 得分 2%，另一个得分 12%——6x 性能差距，100% 归因于环境设计。
+
+**嵌套关系**：Prompt ⊂ Context ⊂ Harness。Prompt 优化指令措辞，Context 策展模型需要的信息（六大组件），Harness 还管防止、度量、控制和修复。MIT 统计：约 95% 大企业 AI 试点失败——根源不是 Prompt 质量，而是 Harness 层的架构缺口。
 
 ### 为什么这个误解有害
 

@@ -2,6 +2,170 @@
 
 ---
 
+## [2026-04-13 13:38] craft | 高优先级 Craft 卡片补建（3 张）
+
+**触发**: 用户指令，基于 Craft 层审计报告的高优先级建议
+
+**操作**:
+- 新建概念卡片：[[craft/concepts/context-engineering|Context Engineering]] — 六大组件、Context Rot、策展原则、OpenClaw 实现案例
+- 新建认知缺口：[[craft/gaps/harness-is-not-workflow|Harness ≠ Workflow]] — 主导权归属辨析、OpenClaw 源码对比表、模型能力分水岭
+- 新建设计笔记：[[craft/design-notes/openclaw-compaction-algorithm|OpenClaw 压缩算法]] — 40% chunk ratio、三级摘要降级、5 分钟超时、保留项选择
+- 更新 [[index.md]]（概念 7→8，设计笔记 4→5，认知缺口 3→4）
+
+**卡片质量说明**:
+1. **Context Engineering 概念卡片**：从 3 篇来源（prompt-vs-context-vs-harness、openclaw-prompt-context-harness、anatomy-of-agent-harness）提取六大组件框架，与 harness 概念卡片形成"子集→超集"的清晰边界。Context Rot 作为关键设计挑战独立成段。
+2. **Harness ≠ Workflow 认知缺口**：以飞樰的源码辨析为核心素材，构建"修复 Bug"的具体对比场景。关键论断："模型能力越强，Harness 越优于 Workflow"——判断标准是"执行路径能否提前确定"。
+3. **OpenClaw 压缩算法设计笔记**：从 openclaw 实体和源码分析来源提取完整参数，逐一分析工程权衡。核心启发："知道什么不该丢，比知道什么该留更重要。"
+
+**Craft 层状态**: 8 概念 + 5 设计笔记 + 4 认知缺口 + 2 视角 = **19 个文件**
+
+---
+
+## [2026-04-13 13:27] ingest | OpenSpec、Superpowers 和 Harness：AI 工程化开发的三层拼图
+
+**来源**: https://mp.weixin.qq.com/s/ssH_OtuLxy4RZD2tKiSKXA
+**作者**: 岚天逸剑
+**深度**: 实践框架
+
+**操作**:
+- 创建来源摘要：[[sources/openspec-superpowers-harness|OpenSpec、Superpowers 和 Harness：三层拼图]]
+- 更新实体页面：[[entities/harness-engineering|Harness Engineering]]（来源 3→4，新增：三层拼图模型——规范层/纪律层/协作层 + 落地优先级 + 与三支柱的关系辨析）
+- 更新主题页面：[[topics/agent-architecture|Agent 架构]]（来源 2→3，新增：Harness 职责分化趋势）
+- 更新主题页面：[[topics/multi-agent-collaboration|多 Agent 协作]]（来源 3→4，新增来源引用）
+- **Craft 增量更新**：
+  - 更新 [[craft/concepts/harness|Harness 概念卡片]]：补充三层拼图模型作为新例子——Harness 职责随复杂度增加而分化
+  - 更新 [[craft/concepts/skill|Skill 概念卡片]]：补充 Superpowers 作为"纪律型 Skill"——预定义规范注入而非从 trace 提炼
+- 更新 [[index.md]]（来源 16→17）
+- 新增交叉引用 5 处
+
+**关键洞察**:
+1. **Harness 不是铁板一块**：随工程复杂度增加，Harness 的规范/纪律/协作三种职责会分化为独立的层
+2. **两种 Skill 路径**：从 trace "积累→提炼"（Hermes/MemOS）vs 从最佳实践"规范→注入"（Superpowers），各有适用场景
+3. **落地优先级精准**：规范 → 纪律 → 协作，因为纪律没有规范则无标准可循，协作没有规范和纪律则越多越乱
+4. **"规范不变、流程不变、团队可弹性扩展"**——三层中前两层追求稳定，第三层追求灵活，这是工程化的核心
+
+**建议新增**:
+- 可考虑新增 OpenSpec 和 Superpowers 实体页面（当有更多来源时）
+- 可考虑新增 `craft/gaps/skill-两条路径.md`：读者以为 Skill 只有"从经验中学习"一条路，实际还有"预定义纪律注入"
+
+---
+
+## [2026-04-13 13:21] ingest | How to Build a Multi-Agent Team in Hermes
+
+**来源**: https://x.com/neoaiforecast/status/2043455838459920718
+**作者**: @neoaiforecast
+**深度**: 实践指南
+
+**操作**:
+- 创建来源摘要：[[sources/hermes-multi-agent-team|How to Build a Multi-Agent Team in Hermes]]
+- 更新实体页面：[[entities/hermes|Hermes]]（来源 2→3，新增：Profile 隔离七维度、SOUL.md vs AGENTS.md 分离、四角色团队模型、Profile + Gateway 跨平台控制面）
+- 更新实体页面：[[entities/soul-md|SOUL.md]]（来源 2→3，新增：Hermes Profile 用法 + SOUL.md vs AGENTS.md 分离原则 + 实践启发更新）
+- 更新主题页面：[[topics/multi-agent-collaboration|多 Agent 协作]]（来源 2→3，新增：Profile 持久隔离作为第三种多 Agent 模式 + 三模式对比表）
+- 更新 [[index.md]]（来源 15→16）
+- 新增交叉引用 5 处
+
+**关键洞察**:
+1. **三种多 Agent 模式的光谱**：delegate_task（临时子 Agent）→ OpenClaw 编排（任务级隔离）→ Profile（持久角色隔离），维度是"生命周期"
+2. **"隔离是起点，不是更好的 prompting"**——记忆污染和上下文混乱比 prompt 质量更影响多 Agent 效果
+3. **SOUL.md vs AGENTS.md 的分离**本质上回答了之前的开放问题"SOUL.md 与 CLAUDE.md/AGENTS.md 的关系"
+4. **Atlas 已在实践**：SOUL.md + IDENTITY.md + USER.md（身份层）vs AGENTS.md（项目层），天然符合分离原则
+
+---
+
+## [2026-04-13 13:17] ingest | Prompt Engineering vs Context Engineering vs Harness Engineering
+
+**来源**: https://dev.to/ljhao/prompt-engineering-vs-context-engineering-vs-harness-engineering-whats-the-difference-in-2026-37pb
+**作者**: PrivOcto
+**深度**: 对比综述
+
+**操作**:
+- 创建来源摘要：[[sources/prompt-vs-context-vs-harness|Prompt vs Context vs Harness Engineering]]
+- 更新实体页面：[[entities/harness-engineering|Harness Engineering]]（来源 2→3，新增：嵌套层级关系、Princeton 64% 数据、Boeckeler 三支柱、统计数据）
+- 更新主题页面：[[topics/agent-architecture|Agent 架构]]（新增：工程方法论嵌套关系段落）
+- **Craft 增量更新**：
+  - 更新 [[craft/concepts/harness|Harness 概念卡片]]：补充 Princeton 精确数据（2% vs 12%）、Context Engineering 与 Harness 的边界
+  - 更新 [[craft/gaps/prompt-is-not-harness|Prompt ≠ Harness 认知缺口]]：补充三层嵌套关系、Princeton 数据、MIT 95% 统计
+- 更新 [[index.md]]（来源 14→15）
+- 新增交叉引用 4 处
+
+**关键洞察**:
+1. **嵌套而非平行**：Prompt ⊂ Context ⊂ Harness 是层级关系，不是三选一
+2. **Princeton 量化**：64% solve rate 提升 + 6x 差距，全归因于 harness 环境设计
+3. **Boeckeler 三支柱**补充：Context Engineering + Architectural Constraints + Garbage Collection——强调自动修复漂移
+4. **Context Rot**：token 增加 → 召回能力下降，因此 Context Engineering 要策展最小可行高信号集
+
+---
+
+## [2026-04-13 13:10] ingest | 深度解析 OpenClaw 在 Prompt/Context/Harness 三个维度中的设计哲学与实践
+
+**来源**: https://mp.weixin.qq.com/s/JycTfNd7EnmWCnJK-QCf0Q
+**作者**: 飞樰（阿里云开发者）
+**深度**: 源码分析级
+
+**操作**:
+- 创建来源摘要：[[sources/openclaw-prompt-context-harness|深度解析 OpenClaw Prompt/Context/Harness 设计哲学]]
+- 大幅更新实体页面：[[entities/openclaw|OpenClaw]]（来源数 3→4，新增：System Prompt 23 模块组装、上下文压缩算法、精细化修剪、Harness 实践含 7 Hook + 三层沙箱 + Harness vs Workflow）
+- **Craft 增量更新**：
+  - 更新 [[craft/concepts/agent-memory|Agent Memory 概念卡片]]：补充 OpenClaw 时间衰减公式（半衰期 30 天）、Memory Flush 隐式写入、200 行截断、BM25+向量双路召回
+  - 更新 [[craft/concepts/skill|Skill 概念卡片]]：补充 OpenClaw Skills 安全隐患（可执行脚本植入风险）和 ClawHub 鉴权
+  - 更新 [[craft/concepts/harness|Harness 概念卡片]]：补充 OpenClaw 7 种 Hook 全生命周期钩子、三层安全沙箱、Harness vs Workflow 辨析（主导权归属）
+- 更新 [[index.md]]（来源 13→14）
+- 新增交叉引用 6 处
+
+**关键洞察**:
+1. **System Prompt 是积木而非文本**：23 个模块按固定顺序拼装，三种 PromptMode 适配不同场景。极简主义措辞（"Quality > quantity"）节省 Context Window
+2. **上下文压缩的分块算法**：40% chunk ratio + 三级摘要降级 + 5 分钟超时 + 写锁。这是 Context Engineering 从理论到工程的关键细节
+3. **Harness vs Workflow 的核心区别是主导权**：Workflow 中模型是节点（人主导），Harness 中模型自主规划（AI 主导但受约束）。模型越强，Harness 越优
+4. **OpenClaw 记忆的时间衰减**：半衰期 30 天的指数衰减，配合 MEMORY.md 不衰减的"常青"层，模拟人类"核心事实+渐忘细节"的记忆结构
+5. **Skills 安全是开放生态的根本张力**：可执行脚本 = 能力无限 + 安全风险，ClawHub 鉴权是当前答案，但问题远未解决
+
+---
+
+## [2026-04-13 13:06] ingest | 5 Agent Design Patterns Every Developer Needs to Know in 2026
+
+**来源**: https://dev.to/ljhao/5-agent-design-patterns-every-developer-needs-to-know-in-2026-17d8
+**作者**: PrivOcto
+**深度**: 概览级
+
+**操作**:
+- 创建来源摘要：[[sources/agent-design-patterns-2026|5 Agent Design Patterns (2026)]]
+- 创建实体页面 3 个：
+  - [[entities/react-pattern|ReAct Pattern]]（Thought → Action → Observation 循环）
+  - [[entities/plan-and-execute|Plan-and-Execute]]（规划与执行分离，92% 完成率）
+  - [[entities/reflection-pattern|Reflection Pattern]]（自我反思，HumanEval 91%）
+- 创建主题页面：[[topics/agent-design-patterns|Agent 设计模式]]（五种模式对比框架 + 选择指南）
+- 更新 [[index.md]]（来源 12→13，实体 12→15，主题 3→4）
+- **Craft 增量更新**：无直接命中。建议后续考虑新增概念卡片：ReAct、Plan-and-Execute、Reflection（当前 craft 侧重 Harness/Memory/Skill，缺少执行模式层面的概念卡片）
+- 新增交叉引用 8 处
+
+**关键洞察**:
+1. 五种模式不互斥而是可组合：ReAct + Tool Use 是最基础组合，Plan-and-Execute + Multi-Agent 支持复杂编排
+2. 从 Harness Engineering 视角看，这些设计模式本质上就是不同的 Harness 架构
+3. 文章质量偏科普级，数据多为二三手引用，但提供的模式选择框架有实用价值
+
+---
+
+## [2026-04-13 13:05] ingest | How Does OpenClaw Work? A Beginner's Guide
+
+**来源**: https://dev.to/ljhao/how-does-openclaw-work-a-beginners-guide-21cj
+**作者**: PrivOcto
+
+**操作**:
+- 创建来源摘要：[[sources/openclaw-beginners-guide|How Does OpenClaw Work?]]
+- 更新实体页面：[[entities/openclaw|OpenClaw]]（来源数 2→3，大幅扩充：四层架构、本地优先哲学、记忆系统、Skills 生态）
+- **Craft 增量更新**：
+  - 更新 [[craft/concepts/skill|Skill 概念卡片]]：补充 OpenClaw "安装即用" vs Hermes "积累即学"的对比例子
+  - 更新 [[craft/concepts/agent-memory|Agent Memory 概念卡片]]：补充 OpenClaw "文件即记忆"模式，指出与 LangSmith Agent Builder 独立收敛到相同结构
+- 更新 [[index.md]]
+- 新增交叉引用 4 处
+
+**关键洞察**:
+1. **OpenClaw 四层架构**：Gateway（WebSocket）→ Sessions/Memory → Provider/Model → Plugins/Tools。比之前只了解多 Agent 层面更完整
+2. **"文件即记忆"收敛**：OpenClaw 和 LangSmith Agent Builder 独立采用了几乎相同的 Markdown 文件记忆结构（MEMORY.md + 日期文件），这可能是这类系统的自然均衡点
+3. **两种 Skill 哲学**：OpenClaw 的"安装即用"（ClawHub 分发）vs Hermes 的"积累即学"（trace 提炼），对应不同的 Agent 进化路径
+
+---
+
 ## [2026-04-13 12:15] craft | v3 创作层改造实施
 
 **概念讲解卡片（新增 2 个，总计 7 个）**：

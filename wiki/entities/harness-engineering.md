@@ -3,7 +3,7 @@
 **类型**: concept
 **创建日期**: 2026-04-12
 **最后更新**: 2026-04-13
-**来源数量**: 2
+**来源数量**: 4
 
 ## 定义
 
@@ -41,7 +41,55 @@ Harness Engineering 是构建可靠 Agent 系统的方法论框架。Harness 是
 - Cron 调度 + 消息推送（Hermes）
 - 心跳检查 + 智库审核 + 反思系统（MemOS）
 
+## 层级关系：Prompt ⊂ Context ⊂ Harness
+
+三层工程方法论不是平行选择，而是嵌套关系：
+
+| 层 | 核心问题 | 范围 |
+|----|---------|------|
+| Prompt Engineering | "How should I phrase this?" | 单次交互 |
+| Context Engineering | "What does the model need to know?" | 多轮信息流 |
+| Harness Engineering | "How do agents operate reliably over thousands of inferences?" | 跨天/周的多步骤系统 |
+
+- Prompt 处理指令措辞，是 Context 的子集
+- Context 决定模型看到什么信息，是 Harness 的子集
+- Harness 还管"系统防止什么、度量什么、控制什么、修复什么"
+
+实践策略：先 Prompt 快速见效 → 加 Context 处理复杂工作流 → 上 Harness 保障生产。
+
+## Boeckeler 三支柱
+
+Birgitta Boeckeler 提出的另一个三支柱框架（与 Hermes vs MemOS 对比版有重叠但侧重不同）：
+
+1. **Context Engineering**：持续增强的知识库 + 动态可观测数据
+2. **Architectural Constraints**：确定性 Linter 和结构化测试强制边界
+3. **Garbage Collection**：周期性 Agent 扫描文档漂移和约束违规
+
+差异：Boeckeler 版本强调 Garbage Collection（自动修复漂移），Hermes/MemOS 版本强调评估闭环（质量度量）。两者互补。
+
+## 三层拼图模型（岚天逸剑）
+
+当 Harness 进入多 Agent 开发场景，其职责可以进一步分解为三层：
+
+| 层次 | 工具 | 管什么 | 类比 |
+|------|------|--------|------|
+| **规范层** | OpenSpec | 做什么——需求、接口、验收标准 | 施工图纸 |
+| **纪律层** | Superpowers | 怎么做——TDD、代码审查、验证流程 | 施工规范手册 |
+| **协作层** | Harness / Agent Team | 谁来做——角色分工、任务调度、权限管控 | 项目经理 + 工地管理 |
+
+**配合原则**："规范不变、流程不变、团队可弹性扩展"——OpenSpec 和 Superpowers 定义稳定的标准和纪律，Harness 定义灵活的团队结构和调度策略。
+
+**落地优先级**：
+1. 先上 OpenSpec（需求结构化）→ 2. 再上 Superpowers 核心技能（TDD + verification）→ 3. 最后上 Harness / Agent Team（多 Agent 协作）
+
+**与前述三支柱的关系**：Harness Engineering 三支柱（记忆治理 / 架构约束 / 评估闭环）描述的是 Harness 的**内部组成**；三层拼图描述的是 Harness 在多 Agent 开发场景中的**外部分工**。两者互补。
+
 ## 核心洞察
+
+**量化证据——Harness > Prompt**：
+- Princeton 研究：仅改变 harness 配置（不改模型），solve rate 提升 64%
+- 同一 Claude Opus 4.5，不同 harness：2% vs 12%——6x 性能差距完全归因于环境设计
+- MIT 统计：约 95% 大企业 AI 试点未能产出可度量回报，根源是架构缺口而非 Prompt 质量
 
 **轨迹是核心资产**：
 - 每次 Agent 的成功和失败都是训练下一代的数据
@@ -113,6 +161,8 @@ Harness Engineering 是构建可靠 Agent 系统的方法论框架。Harness 是
 - [[sources/llm-training-pipeline|大模型训练：原理、路径与新实践]] - 将 Harness Engineering 作为独立优化对象，引用 Meta-Harness 论文
 - [[sources/anatomy-of-agent-harness|The Anatomy of an Agent Harness]] - 系统化 Harness 的 12 个组件和三层工程定义
 - [[sources/long-running-agents|Effective Harnesses for Long-Running Agents]] - Anthropic 官方长时运行 Agent 实践
+- [[sources/prompt-vs-context-vs-harness|Prompt vs Context vs Harness Engineering]] - 三层嵌套层级关系 + Princeton 64% 数据 + Boeckeler 三支柱
+- [[sources/openspec-superpowers-harness|OpenSpec、Superpowers 和 Harness]] - 多 Agent 开发场景的三层拼图模型
 
 ## 实践启发
 

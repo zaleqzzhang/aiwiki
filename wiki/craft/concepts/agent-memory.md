@@ -51,6 +51,7 @@ Sarah Wooders 的比喻更直接："Asking to plug memory into an agent harness 
 
 - **Hermes 四层记忆**：Prompt Memory（始终在线，3,575 字符）→ Session Search（按需检索，FTS5）→ Skills（渐进加载）→ Honcho（用户建模）。分层原则是按"需要的频率"排列：越常用越靠前。
 - **LangSmith Agent Builder**：采用"文件即记忆"设计（memory/ 目录下分 preferences/、learnings/、context/），Agent 直接读写文件，不依赖外部服务。设计原则是便携性——记忆可以迁移到其他 Harness。
+- **OpenClaw**：同样采用"文件即记忆"——MEMORY.md（长期事实）+ memory/YYYY-MM-DD.md（每日笔记）+ 向量嵌入检索。扁平模式，无分层策展，与 Hermes 的强制策展形成对比。有趣的是，OpenClaw 和 LangSmith Agent Builder 独立收敛到了几乎相同的文件结构，说明"Markdown 文件即记忆"可能是这类系统的一个自然均衡点。源码级细节（飞樰分析）：MEMORY.md 注入系统提示词时**截断到 200 行**（控制 token），每日笔记用**时间衰减公式**降权——衰减系数 = e^(-λ × 天数)，半衰期 30 天（30 天减半，90 天剩 1/8）。写入分"显式"（用户指令）和"隐式闪存"（Memory Flush：会话结束/新 Session/上下文压缩时自动提炼归档）。召回用 BM25+向量双路召回 → SQLite 索引。这套设计的微妙之处：MEMORY.md 不衰减 = 策展层（人/Agent 主动维护），每日笔记衰减 = 原始层（自动淡忘），两者配合模拟人类记忆的"核心事实+渐忘细节"结构。
 - **MemOS 无界记忆**：35,000+ 条记忆、65,524 条关系边，三层去重机制（内容哈希 → 相似度检测 → LLM 裁决），混合搜索（BM25 + 向量 + RRF 融合）。证明"无限存储"路径的工程可行性。
 
 ## 相关页面

@@ -2,16 +2,17 @@
 
 **创建日期**: 2026-04-12
 **最后更新**: 2026-04-13
-**来源数量**: 2
+**来源数量**: 4
 
 ## 概述
 
-多 Agent 协作是现代 AI Agent 系统的核心命题：如何让多个 agent 高效协作，共同完成复杂任务。当前主要有两种设计哲学：
+多 Agent 协作是现代 AI Agent 系统的核心命题：如何让多个 agent 高效协作，共同完成复杂任务。当前主要有三种设计哲学：
 
-1. **单 Agent + 自我改进**（Hermes 核心）：通过知识积累提升能力，多 Agent 协作是可选能力
-2. **多 Agent 协作编排**（OpenClaw）：通过外部编排实现模块化分工
+1. **临时子 Agent + 同步阻塞**（Hermes delegate_task）：任务级隔离，用完即弃
+2. **异步编排 + 事件驱动**（OpenClaw）：模块化分工，运行时可调
+3. **持久化 Profile 隔离**（Hermes Profiles）：角色级隔离，各 Agent 长期运行、独立积累
 
-这两种哲学在隔离性、灵活性、token 效率、学习路径上存在本质差异。
+前两种面向"任务协作"（临时的），第三种面向"团队协作"（持久的）。
 
 ## 两种哲学
 
@@ -185,6 +186,35 @@ OpenClaw 异步编排层（处理复杂工作流）
 
 **原则**：在需要隔离时强隔离，在需要协作时强协作。
 
+### Profile 持久隔离（Hermes Profiles）
+
+**"专业团队"模式**
+
+```
+Profile 层（持久化角色隔离）
+    ├── Hermes（Orchestrator）—— 规划、分解、综合
+    ├── Alan（Research）—— 证据、验证、怀疑精神
+    ├── Mira（Writer）—— 清晰、结构、受众意识
+    └── Turing（Builder）—— 实现、调试、测试
+        ↓
+    每个 Profile 完全独立：memory / sessions / skills / personality / cron / gateway
+        ↓
+    SOUL.md（身份）独立 + AGENTS.md（项目上下文）共享
+        ↓
+    Gateway + Messaging → 跨平台控制面
+```
+
+**与前两种模式的本质区别**：
+
+| 维度 | delegate_task（临时） | OpenClaw 编排（任务级） | Profile（持久） |
+|------|---------------------|----------------------|----------------|
+| 生命周期 | 任务结束即销毁 | 任务/流程级 | 持久存在 |
+| 记忆积累 | ❌ 无 | 有限 | ✅ 各自独立积累 |
+| 身份定义 | 无（通用子 agent） | 角色配置 | SOUL.md（完整身份） |
+| 适用场景 | 并行子任务 | 复杂工作流 | 长期专业团队 |
+
+**关键洞察**："从单 Agent 到多 Agent 团队的起点是隔离，不是更好的 prompting。"
+
 ## 核心组件
 
 - [[entities/hermes|Hermes]] - 同步阻塞式框架
@@ -200,6 +230,8 @@ OpenClaw 异步编排层（处理复杂工作流）
 
 ## 相关来源
 
+- [[sources/hermes-multi-agent-team|How to Build a Multi-Agent Team in Hermes]] - Profile 持久隔离 + 四角色团队 + SOUL.md/AGENTS.md 分离
+- [[sources/openspec-superpowers-harness|OpenSpec、Superpowers 和 Harness]] - 多 Agent 开发的三层拼图：规范→纪律→协作
 - [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - 多 Agent 协作模式对比
 - [[sources/hermes-agent-inside|Inside Hermes Agent]] - Hermes 单 Agent 架构、四层记忆、学习循环
 

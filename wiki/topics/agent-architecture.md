@@ -1,8 +1,8 @@
 # Agent 架构
 
 **创建日期**: 2026-04-12
-**最后更新**: 2026-04-12
-**来源数量**: 1
+**最后更新**: 2026-04-13
+**来源数量**: 3
 
 ## 概述
 
@@ -27,6 +27,20 @@ AI Agent 架构正在从简单的"模型 + 提示词"演变为多层可配置系
 - 更新方式：离线批处理（"做梦"）或热路径更新
 - 特点：最灵活，可在 Agent/用户/组织不同粒度更新
 
+### 工程方法论的嵌套关系
+
+三层架构对应三层工程方法论，构成嵌套层级（非平行选择）：
+
+**Prompt Engineering ⊂ Context Engineering ⊂ Harness Engineering**
+
+| 工程方法论 | 核心问题 | 对应架构层 |
+|-----------|---------|-----------|
+| Prompt Engineering | "How should I phrase this?" | 单次交互指令 |
+| Context Engineering | "What does the model need to know?" | Context 层管理 |
+| Harness Engineering | "How do agents operate reliably?" | Harness 层设计 |
+
+量化证据（Princeton）：仅改变 harness 配置，solve rate 提升 64%。同一 Claude Opus 4.5 在不同 harness 下：2% vs 12%。
+
 ### 核心组件
 
 - [[entities/soul-md|SOUL.md]] - Agent 层面的持久记忆模式
@@ -39,6 +53,7 @@ AI Agent 架构正在从简单的"模型 + 提示词"演变为多层可配置系
 2. **从固定到可演进**：每一层都支持持续学习，不是静态配置
 3. **从通用到个性化**：上下文层支持用户/组织级别的定制
 4. **Trace 驱动**：所有改进都基于执行 trace，形成数据闭环
+5. **Harness 职责分化**：随工程复杂度增加，Harness 的不同职责分化为独立层——规范层（OpenSpec）、纪律层（Superpowers）、协作层（Harness/Agent Team）。三层遵循"规范不变、流程不变、团队可弹性扩展"的配合原则
 
 ## 典型案例
 
@@ -58,6 +73,8 @@ AI Agent 架构正在从简单的"模型 + 提示词"演变为多层可配置系
 - [[sources/continual-learning-ai-agents|Continual Learning for AI Agents]] - Harrison Chase 对三层架构的系统阐述
 - [[sources/anatomy-of-agent-harness|The Anatomy of an Agent Harness]] - Harness 的 12 组件拆解
 - [[sources/harness-memory-lockin|Your Harness, Your Memory]] - Harness 与 Memory 的绑定关系
+- [[sources/prompt-vs-context-vs-harness|Prompt vs Context vs Harness Engineering]] - 三层嵌套层级关系 + Princeton 64% 数据
+- [[sources/openspec-superpowers-harness|OpenSpec、Superpowers 和 Harness]] - 多 Agent 开发场景的三层拼图模型
 
 ## 待探索方向
 

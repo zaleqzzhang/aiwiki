@@ -3,7 +3,7 @@
 **类型**: framework
 **创建日期**: 2026-04-12
 **最后更新**: 2026-04-13
-**来源数量**: 2
+**来源数量**: 3
 
 ## 定义
 
@@ -62,9 +62,56 @@ Hermes 的独特之处在于将"发生了什么"升级为"什么有效"：
 - 程序性 → Skills（任务执行时加载）
 - 用户特性 → Honcho（长期个人助理场景）
 
-## 多 Agent 协作模式
+## Profile 隔离机制
 
-Hermes 同时支持多 Agent 协作（delegate_task），但这是可选能力：
+Hermes 除了 delegate_task 临时子 Agent，还支持**持久化 Profile 隔离**——这是构建多 Agent 团队的核心机制。
+
+### Profile 隔离的七个维度
+
+每个 Profile 是一个完全独立的 agent 环境，隔离以下状态：
+
+| 维度 | 说明 |
+|------|------|
+| configuration | 独立的 config.yaml |
+| sessions | 独立的会话历史 |
+| memory | 独立的 MEMORY.md / 记忆层 |
+| skills | 独立的技能库 |
+| personality | 独立的 SOUL.md（身份定义） |
+| cron state | 独立的定时任务 |
+| gateway state | 独立的消息路由 |
+
+**关键区分**：Profile ≠ Persona。Persona 只是换名字的克隆，Profile 是完全隔离的 agent 环境。
+
+### SOUL.md vs AGENTS.md 分离原则
+
+| 文件 | 用途 | 粒度 | 稳定性 |
+|------|------|------|--------|
+| SOUL.md | "who the agent is" — 身份、语气、优先级、行为边界 | 每个 Profile 独立 | 高（很少变） |
+| AGENTS.md | "shared project context" — 仓库结构、编码规范、工具规则 | 项目级共享 | 中（随项目变） |
+
+不混合——身份稳定归 SOUL.md，项目上下文可变归 AGENTS.md。
+
+### 推荐四角色团队模型
+
+| 角色 | Profile | 优化方向 |
+|------|---------|---------|
+| Orchestrator | Hermes（默认） | 规划、分解、排序、综合、QA |
+| Research Specialist | Alan | 证据、验证、怀疑精神、不确定性标注 |
+| Writer | Mira | 清晰、结构、受众意识、打磨 |
+| Builder/Debugger | Turing | 实现、调试、测试、可重现性 |
+
+**扩展原则**："先 Orchestrator + 1 Specialist → 验证 handoff → 再扩展"。最聪明的团队不是最大的，而是角色边界最清晰的。
+
+### Profile + Gateway = 跨平台控制面
+
+Profile 配合 Gateway 后，每个角色可以绑定不同的 messaging 身份（Telegram、Discord、Slack 等），实现：
+- 远程监控和任务分派
+- 跨平台角色路由
+- 从"本地组织功能"升级为"活的多 Agent 控制系统"
+
+## 多 Agent 协作模式（delegate_task）
+
+Hermes 同时支持通过 delegate_task 进行临时多 Agent 协作：
 
 ### 架构设计
 
@@ -191,6 +238,7 @@ API 调用 → 工具执行 → 循环
 
 ## 相关来源
 
+- [[sources/hermes-multi-agent-team|How to Build a Multi-Agent Team in Hermes]] - Profile 隔离 + 四角色团队 + SOUL.md/AGENTS.md 分离
 - [[sources/hermes-openclaw-multi-agent-comparison|同步阻塞 vs 异步编排]] - 多 Agent 协作模式对比
 - [[sources/hermes-agent-inside|Inside Hermes Agent]] - 四层记忆架构、学习循环详解
 
