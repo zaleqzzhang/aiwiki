@@ -2,6 +2,31 @@
 
 ---
 
+## [2026-04-13 12:15] craft | v3 创作层改造实施
+
+**概念讲解卡片（新增 2 个，总计 7 个）**：
+- 创建 [[craft/concepts/hook-mechanism]] - Hook 机制概念卡片
+- 创建 [[craft/concepts/meta-harness]] - Meta-Harness 概念卡片
+
+**设计笔记（新增 3 个，总计 4 个）**：
+- 创建 [[craft/design-notes/memos-triple-dedup]] - MemOS 三层去重设计
+- 创建 [[craft/design-notes/hermes-subagent-sync-blocking]] - 子 Agent 同步阻塞设计
+- 创建 [[craft/design-notes/skill-auto-generation-quality]] - Skill 质量双关卡设计
+
+**认知缺口（新增 3 个）**：
+- 创建 [[craft/gaps/rag-is-not-memory]] - RAG ≠ Agent Memory
+- 创建 [[craft/gaps/prompt-is-not-harness]] - Prompt ≠ Harness
+- 创建 [[craft/gaps/skill-is-not-tool]] - Skill ≠ Tool
+
+**视角库（新增 2 个）**：
+- 创建 [[craft/perspectives/memory-autonomy-vs-system-enforcement]] - 记忆自治 vs 系统强制
+- 创建 [[craft/perspectives/constraint-vs-unbounded-design]] - 约束式 vs 无界式设计
+
+**架构更新**：
+- 更新 AGENTS.md：三层架构 → 四层架构，增加 Craft 工作流定义和页面格式约定
+- 更新 index.md：增加 craft 创作层索引
+- 创建 gaps/、perspectives/、drafts/ 目录
+
 ## [2026-04-13 09:44] ingest | 两篇新文章摄入
 
 **来源**: 2 篇新文章

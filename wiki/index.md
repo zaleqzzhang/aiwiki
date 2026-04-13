@@ -67,10 +67,39 @@
 
 ---
 
+## 创作层 (craft/)
+
+### 概念讲解卡片 (7)
+- [[craft/concepts/harness|Harness]] - Agent 的运行时系统，模型"跑"在什么上面
+- [[craft/concepts/trace|Trace]] - Agent 完整执行路径的记录，所有改进的数据源
+- [[craft/concepts/skill|Skill]] - 从成功和失败中提炼的结构化可复用经验
+- [[craft/concepts/agent-memory|Agent Memory]] - Agent 积累自身经验的系统，不是 RAG
+- [[craft/concepts/three-layer-learning|三层学习]] - Model / Harness / Context 三个层次的持续改进
+- [[craft/concepts/hook-mechanism|Hook 机制]] - Agent 生命周期的自动拦截器，100% 捕获保障
+- [[craft/concepts/meta-harness|Meta-Harness]] - 用 Agent 改进 Agent 的 Harness
+
+### 设计笔记 (4)
+- [[craft/design-notes/hermes-memory-limit|Hermes 记忆上限]] - 为什么选择 3,575 字符？约束即特性
+- [[craft/design-notes/memos-triple-dedup|MemOS 三层去重]] - 哈希→向量→LLM 的成本梯度设计
+- [[craft/design-notes/hermes-subagent-sync-blocking|子 Agent 同步阻塞]] - 为什么不用异步？上下文污染是更大的问题
+- [[craft/design-notes/skill-auto-generation-quality|Skill 质量双关卡]] - confidence + 质量评分缺一不可
+
+### 认知缺口 (3)
+- [[craft/gaps/rag-is-not-memory|RAG ≠ Agent Memory]] - 查百科 vs 翻工作日志
+- [[craft/gaps/prompt-is-not-harness|Prompt ≠ Harness]] - 一封邮件 vs 整个工作环境
+- [[craft/gaps/skill-is-not-tool|Skill ≠ Tool]] - 手 vs 肌肉记忆
+
+### 视角 (2)
+- [[craft/perspectives/memory-autonomy-vs-system-enforcement|记忆自治 vs 系统强制]] - Hermes 路径 vs MemOS 路径
+- [[craft/perspectives/constraint-vs-unbounded-design|约束式 vs 无界式设计]] - 有限空间强制策展 vs 无限存储智能管理
+
+---
+
 ## 统计
 
-- 来源总数：16
-- 实体总数：15
+- 来源总数：11
+- 实体总数：12
 - 主题总数：3
 - 综合分析数：1
+- 创作层：7 概念 + 4 设计笔记 + 3 认知缺口 + 2 视角
 - 最后更新：2026-04-13

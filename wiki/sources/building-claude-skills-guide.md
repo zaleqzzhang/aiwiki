@@ -151,7 +151,7 @@ Fix failure → Update SKILL.md → Test again → Repeat until all 5 pass
 - 添加明确的触发条件和负边界
 - 添加测试协议验证 AGENTS.md 的有效性
 
-对庆正：
+对阿正：
 - 可以为常用任务创建 Skills（如写公众号文章、生成财报解读）
 - 每个 Skill 遵循五组件结构
 - 建立测试流程确保 Skill 质量
